@@ -5,18 +5,17 @@ clc;
 % Uzduoti atliksiu naudojant 'data' faila, nes neisejo legaliai isirasyt
 % reikiamo toolbox'o
 
-data = importdata("Data.txt");      %duomenu nuskaitymas
+data = importdata("Data.txt");      %duomenu 
 
-w1 = randn(1);                      %trys parametrai, kuriu reiksmes yra atsitiktines
+w1 = randn(1);      
 w2 = randn(1);
 b = randn(1);
+x1 = data(:,1)';
+x2 = data(:,2)';
+T = data(:,3)';
+eta = 0.1;          
 
-x1 = data(:,1)';                    %pirmo pozymio eilute
-x2 = data(:,2)';                    %antro pozymio eilute
-T = data(:,3)';                     %reikalingi atsakkymai
-eta = 0.1;                          %mokymosi greitis
-
-for n = 1:1000                      %isvesties ir parametru atnaujinimo ciklas
+for n = 1:1000
     for i = 1:length(x1)
         if (x1(i)*w1 + x2(i)*w2 + b) > 0
             y(i) = 1;
@@ -31,7 +30,6 @@ for n = 1:1000                      %isvesties ir parametru atnaujinimo ciklas
     end
 end
 
-%rezultatu isvedimas
 fprintf('Gauti rezultatai:\n');
 disp(y);
 fprintf('Teisingi rezultatai:\n');
